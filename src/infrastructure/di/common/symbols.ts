@@ -1,4 +1,8 @@
 export const symbols = {
+  common: {
+    config: Symbol.for("/common/config")
+  },
+
   user: {
     repository: Symbol.for("/user/repository"),
     service: Symbol.for("/user/service"),

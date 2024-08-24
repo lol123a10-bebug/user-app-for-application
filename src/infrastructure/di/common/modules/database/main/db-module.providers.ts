@@ -1,18 +1,28 @@
+import { Provider } from "@nestjs/common";
 import { Sequelize } from "sequelize";
 
-import { symbols } from "di/common/symbols";
+import { symbols } from "di/common";
+
+import { Config, DbConfig } from "infrastructure/config";
 
 import { commonProviders } from "../common-providers";
 
-export const dbModuleProviders = [
+export const dbModuleProviders: Provider[] = [
   {
     provide: symbols.db.main,
-    useFactory: () => {
+    useFactory: (config: Config) => {
+      const { auth, host, name } = config.get("db") as DbConfig;
+
       return new Sequelize({
-        host: "http://localhost:3306",
+        database: name,
+        username: auth.username,
+        password: auth.password,
+        host: host,
         dialect: "mysql"
       });
-    }
+    },
+
+    inject: [symbols.common.config]
   },
 
   ...commonProviders

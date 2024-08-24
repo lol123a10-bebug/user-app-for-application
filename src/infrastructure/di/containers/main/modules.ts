@@ -1,1 +1,1 @@
-export { DbModule } from "di/common";
+export { ConfigModule, DbModule } from "di/common";
