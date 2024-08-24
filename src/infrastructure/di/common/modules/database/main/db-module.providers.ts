@@ -1,5 +1,5 @@
 import { Provider } from "@nestjs/common";
-import { Sequelize } from "sequelize";
+import { Sequelize } from "sequelize-typescript";
 
 import { symbols } from "di/common";
 

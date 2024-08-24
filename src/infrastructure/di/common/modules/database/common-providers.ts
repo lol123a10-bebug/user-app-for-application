@@ -1,14 +1,20 @@
 import { Provider } from "@nestjs/common";
-import { Sequelize } from "sequelize";
+import { ModelCtor, Sequelize } from "sequelize-typescript";
 
 import { symbols } from "di/common";
 
 import { UserModel } from "infrastructure/database";
 
+const attachModel = (model: ModelCtor) => (db: Sequelize) => {
+  db.addModels([model]);
+
+  return model;
+};
+
 export const commonProviders: Provider[] = [
   {
     provide: symbols.user.model,
-    useFactory: (db: Sequelize) => db.modelManager.addModel(UserModel),
+    useFactory: attachModel(UserModel),
     inject: [symbols.db.main]
   }
 ];
