@@ -1,0 +1,25 @@
+{
+  "semi": true,
+  "singleQuote": false,
+  "arrowParens": "always",
+  "printWidth": 140,
+  "tabWidth": 2,
+  "trailingComma": "none",
+  "proseWrap": "preserve",
+  "plugins": ["@ianvs/prettier-plugin-sort-imports"],
+  "importOrderParserPlugins": ["typescript", "decorators-legacy"],
+  "importOrderTypeScriptVersion": "5.1.3",
+  "importOrder": [
+    "<BUILTIN_MODULES>",
+    "",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^(di)(/.*)$",
+    "",
+    "^(domain|application|infrastructure)(/.*)$",
+    "",
+    "^(usecases)(/.*)$",
+    "",
+    "^[.]"
+  ]
+}
