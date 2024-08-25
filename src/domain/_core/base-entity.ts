@@ -13,22 +13,22 @@ export class BaseEntity<Model extends BaseModel> {
 
   toJSON(): Model {
     const proto = Object.getPrototypeOf(this);
-    const jsonObj: any = Object.assign({}, this);
-
     const entries = Object.entries(Object.getOwnPropertyDescriptors(proto));
+
+    const model = {} as Model;
 
     entries
       .filter(([_key, descriptor]) => typeof descriptor.get === "function")
       .forEach(([key, descriptor]) => {
         if (descriptor && key[0] !== "_") {
           try {
-            jsonObj[key] = this[key];
+            model[key] = this[key];
           } catch (error) {
             console.error(`Error calling getter ${key}`, error);
           }
         }
       });
 
-    return { ...jsonObj, id: this.id || undefined };
+    return { ...model, id: this.id || undefined };
   }
 }
