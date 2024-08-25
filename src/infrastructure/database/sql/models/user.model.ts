@@ -1,4 +1,4 @@
-import { Column, Model, Table } from "sequelize-typescript";
+import { Column, Model, Table, Unique } from "sequelize-typescript";
 
 import * as DomainModels from "domain/models";
 
@@ -12,4 +12,14 @@ export class UserModel extends Model implements DomainModels.UserModel {
 
   @Column
   phone: string;
+
+  @Unique
+  @Column
+  username: string;
+
+  @Column
+  password: string;
+
+  @Column
+  salt: string;
 }

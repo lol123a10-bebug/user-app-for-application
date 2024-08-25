@@ -1,4 +1,4 @@
-import { Expose } from "class-transformer";
+import { Exclude, Expose } from "class-transformer";
 
 import { UserModel } from "domain/models";
 
@@ -16,4 +16,13 @@ export class UserPresenter implements UserPresenterParams {
 
   @Expose()
   id?: number | undefined;
+
+  @Expose()
+  username: string;
+
+  @Exclude()
+  password: string;
+
+  @Exclude()
+  salt: string;
 }

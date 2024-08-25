@@ -3,6 +3,11 @@ export const symbols = {
     config: Symbol.for("/common/config")
   },
 
+  auth: {
+    crypto: Symbol.for("/auth/crypto"),
+    token: Symbol.for("/auth/token")
+  },
+
   user: {
     repository: Symbol.for("/user/repository"),
     service: Symbol.for("/user/service"),
@@ -17,7 +22,9 @@ export const symbols = {
     api: {
       user: {
         create: Symbol.for("/usecases/api/user/create"),
-        findById: Symbol.for("/usecases/api/user/findById")
+        findById: Symbol.for("/usecases/api/user/findById"),
+        authorize: Symbol.for("/usecases/api/user/authorize"),
+        createToken: Symbol.for("/usecases/api/user/createToken")
       }
     }
   }

@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsPhoneNumber, IsString } from "class-validator";
+import { IsEmail, IsNotEmpty, IsOptional, IsPhoneNumber, IsString } from "class-validator";
 
 import { UserModel } from "domain/models";
 
@@ -16,4 +16,13 @@ export class CreateUserDto implements CreateUserDtoParams {
   @IsPhoneNumber()
   @IsString()
   phone: string;
+
+  @IsString()
+  username: string;
+
+  @IsString()
+  password: string;
+
+  @IsOptional()
+  salt: string;
 }

@@ -13,5 +13,9 @@ export const configSchema = (): ConfigSchema => ({
       username: getEnv("DB_AUTH_USERNAME", "username"),
       password: getEnv("DB_AUTH_PASSWORD", "password")
     }
+  },
+
+  jwt: {
+    secret: getEnv("JWT_SECRET", "Wow, thats cool secret ^_^")
   }
 });

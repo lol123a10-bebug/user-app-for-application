@@ -11,8 +11,13 @@ export interface DbConfig {
   name: string;
 }
 
+export interface JwtConfig {
+  secret: string;
+}
+
 export interface ConfigSchema {
   db: DbConfig;
+  jwt: JwtConfig;
 }
 
 export type Config = ConfigService<ConfigSchema>;

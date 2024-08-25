@@ -4,6 +4,9 @@ export interface UserModel extends BaseModel {
   name: string;
   email: string;
   phone: string;
+  username: string;
+  password: string;
+  salt: string;
 }
 
 export class User extends BaseEntity<UserModel> {
@@ -15,4 +18,13 @@ export class User extends BaseEntity<UserModel> {
 
   @EntityProperty()
   phone: string;
+
+  @EntityProperty()
+  username: string;
+
+  @EntityProperty()
+  password: string;
+
+  @EntityProperty()
+  salt: string;
 }
