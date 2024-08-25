@@ -11,13 +11,14 @@ export const dbModuleProviders: Provider[] = [
   {
     provide: symbols.db.main,
     useFactory: (config: Config) => {
-      const { auth, host, name } = config.get("db") as DbConfig;
+      const { auth, host, name, port } = config.get("db") as DbConfig;
 
       return new Sequelize({
         database: name,
         username: auth.username,
         password: auth.password,
-        host: host,
+        host,
+        port,
         dialect: "mysql"
       });
     },

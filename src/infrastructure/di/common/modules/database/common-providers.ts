@@ -7,6 +7,7 @@ import { UserModel } from "infrastructure/database";
 
 const attachModel = (model: ModelCtor) => (db: Sequelize) => {
   db.addModels([model]);
+  db.sync({ alter: true });
 
   return model;
 };
